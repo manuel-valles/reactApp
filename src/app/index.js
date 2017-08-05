@@ -2,6 +2,12 @@
 var React = require('react');
 var ReactDOM =  require('react-dom');
 
+// Module requires
+var TodoItem = require('./todoItem');
+
+//CSS requires
+require('./css/index.css');
+
 // Create component
 var TodoComponent = React.createClass({
 	getInitialState: function(){
@@ -41,6 +47,8 @@ var TodoComponent = React.createClass({
 						<li>{this.state.todos[1]}</li>
 						<li>{this.state.todos[2]}</li>
 					</ul>
+					<hr/>
+					<p onClick={this.clicked}>The busiest people have the most leisure...</p>
 					<ul>{todos}</ul>
 				</div>
 			</div>
@@ -61,25 +69,6 @@ var TodoComponent = React.createClass({
 		});
 	}
 
-});
-
-// Create TodoItem component
-var TodoItem = React.createClass({
-	render: function(){
-		return(
-			<li>
-				<div className="todo-item">
-					<span className="item-name">{this.props.item}</span>
-					<span className="item-delete" onClick={this.handleDelete}> X </span>
-				</div>
-			</li>
-		); 
-	},// render
-
-	// Custom functions
-	handleDelete: function(){
-		this.props.onDelete(this.props.item);
-	}
 });
 
 var myCheese = {name:'Camembert', smellFactor: 'Extreme pong', price:'3.50'};
