@@ -7,7 +7,7 @@ var ReactDOM =  require('react-dom');
 // import { Router, Route, browserHistory } from 'react-router';
 
 // OPTION B: IMPORTING THE REACT-ROUTER-DOM
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 
 // Module requires
 var TodoItem = require('./todoItem');
@@ -48,11 +48,12 @@ var TodoComponent = React.createClass({
 		}
 	},
 	render: function(){
-		var ager = setTimeout(function(){
+		// BackUp setState
+		/*var ager = setTimeout(function(){
 			this.setState({
 				age: 35
 			});
-		}.bind(this), 5000);
+		}.bind(this), 5000);*/
 
 		var todos = this.state.todos;
 		todos = todos.map(function(item, index){
@@ -90,6 +91,7 @@ var TodoComponent = React.createClass({
 
 		return(
             <div id="todo-list">
+            	<Link to={'/about'}>About</Link>
                 <p>The busiest people have the most leisure...</p>
                 <ul>{todos}</ul>
                 <AddItem onAdd={this.onAdd} />
@@ -121,6 +123,7 @@ var TodoComponent = React.createClass({
 	},
 
 	//lifecycle functions
+
 	componentWillMount: function(){
 		console.log('componentWillMount');
 	},
